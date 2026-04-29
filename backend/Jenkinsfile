@@ -28,6 +28,19 @@ pipeline {
                 }
             }
         }
+
+        stage('SonarQube Analysis') {
+            steps {
+                dir('backend') {
+                    script {
+                        scannerHome = tool 'SonarQubeScanner'
+                    }
+                    withSonarQubeEnv('SonarCloud') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
+                }
+            }
+        }
         
         stage('Deploy') {
             steps {
