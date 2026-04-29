@@ -4,6 +4,16 @@ pipeline {
     tools {
         nodejs 'NodeJS'
     }
+
+    services {
+        mysql {
+            image 'mysql:8'
+            environment {
+                MYSQL_ROOT_PASSWORD = 'root'
+                MYSQL_DATABASE = 'incident_db'
+            }
+        }
+    }
     
     stages {
         stage('Checkout') {
