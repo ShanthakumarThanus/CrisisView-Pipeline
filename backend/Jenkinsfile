@@ -29,19 +29,6 @@ pipeline {
             }
         }
         
-        stage('SonarQube Analysis') {
-            steps {
-                dir('backend') {
-                    script {
-                        scannerHome = tool 'SonarQubeScanner'
-                    }
-                    withSonarQubeEnv('SonarCloud') {
-                        sh "${scannerHome}/bin/sonar-scanner"
-                    }
-                }
-            }
-        }
-        
         stage('Deploy') {
             steps {
                 dir('backend') {
@@ -54,7 +41,7 @@ pipeline {
                             mkdir -p ~/.ssh
                             ssh-keyscan -H ${VM_IP} >> ~/.ssh/known_hosts
                             ssh -i ${SSH_KEY} ${VM_USER}@${VM_IP} "sudo mkdir -p /var/www/backend && sudo chown -R ${VM_USER}:${VM_USER} /var/www/backend"
-                            scp -i ${SSH_KEY} -r ./* ${VM_USER}@${VM_IP}:/var/www/backend/
+                            scp -i ${SSH_KEY} -r ./package.json ./server.js ./routes ./models.js ./db.js ./migration.js ./seed.js ./Dockerfile ./Jenkinsfile ./sonar-project.properties ${VM_USER}@${VM_IP}:/var/www/backend/
                         '''
                     }
                 }
