@@ -24,7 +24,7 @@ pipeline {
         stage('Test') {
             steps {
                 dir('backend') {
-                    sh 'npx jest __tests__/incident.routes.test.js --coverage'
+                    sh 'npx node --experimental-vm-modules node_modules/jest/bin/jest.js __tests__/incident.routes.test.js --coverage'
                 }
             }
         }
