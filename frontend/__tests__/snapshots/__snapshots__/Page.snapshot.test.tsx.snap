@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Tests de Snapshot - Home Page la page d'accueil correspond au snapshot 1`] = `
+<div>
+  <div
+    class="h-[90vh]"
+  >
+    <h1
+      class="text-2xl font-bold p-4"
+    >
+      Incident Map
+    </h1>
+    <p>
+      Number of incidents: 
+      0
+    </p>
+  </div>
+</div>
+`;
