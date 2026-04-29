@@ -7,7 +7,7 @@ pipeline {
     
     environment {
         CI = 'true'
-        DOCKER_IMAGE = 'shanthakumarthanus/crisisview-frontend'
+        DOCKER_IMAGE = '[mon-nom-d-utilisateur]/crisisview-frontend'
         DOCKER_TAG = 'v1'
     }
     
@@ -67,7 +67,7 @@ pipeline {
                         sh "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
                         
                         withCredentials([string(credentialsId: 'docker-hub-pwd', variable: 'DOCKER_PWD')]) {
-                            sh "docker login -u shanthakumarthanus -p ${DOCKER_PWD}"
+                            sh "docker login -u [mon-nom-d-utilisateur] -p ${DOCKER_PWD}"
                             sh "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
                             sh "docker push ${DOCKER_IMAGE}:latest"
                             sh 'docker logout'

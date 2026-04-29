@@ -1,6 +1,4 @@
-Started by user Thanus SHANTHAKUMAR
-
-Obtained Jenkinsfile from git https://github.com/ShanthakumarThanus/CrisisView-Pipeline
+Obtained Jenkinsfile from git https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline
 [Pipeline] Start of Pipeline
 [Pipeline] node
 Running on Jenkins
@@ -14,11 +12,11 @@ The recommended git tool is: NONE
 No credentials specified
  > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/CrisisView-Pipeline/.git # timeout=10
 Fetching changes from the remote Git repository
- > git config remote.origin.url https://github.com/ShanthakumarThanus/CrisisView-Pipeline # timeout=10
-Fetching upstream changes from https://github.com/ShanthakumarThanus/CrisisView-Pipeline
+ > git config remote.origin.url https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline # timeout=10
+Fetching upstream changes from https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline
  > git --version # timeout=10
  > git --version # 'git version 2.47.3'
- > git fetch --tags --force --progress -- https://github.com/ShanthakumarThanus/CrisisView-Pipeline +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git fetch --tags --force --progress -- https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline +refs/heads/*:refs/remotes/origin/* # timeout=10
  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
 Checking out Revision 5937875204303eef319880b9c340fb1b99af1758 (refs/remotes/origin/main)
  > git config core.sparsecheckout # timeout=10
@@ -51,11 +49,11 @@ The recommended git tool is: NONE
 No credentials specified
  > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/CrisisView-Pipeline/.git # timeout=10
 Fetching changes from the remote Git repository
- > git config remote.origin.url https://github.com/ShanthakumarThanus/CrisisView-Pipeline # timeout=10
-Fetching upstream changes from https://github.com/ShanthakumarThanus/CrisisView-Pipeline
+ > git config remote.origin.url https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline # timeout=10
+Fetching upstream changes from https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline
  > git --version # timeout=10
  > git --version # 'git version 2.47.3'
- > git fetch --tags --force --progress -- https://github.com/ShanthakumarThanus/CrisisView-Pipeline +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git fetch --tags --force --progress -- https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline +refs/heads/*:refs/remotes/origin/* # timeout=10
  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
 Checking out Revision 5937875204303eef319880b9c340fb1b99af1758 (refs/remotes/origin/main)
  > git config core.sparsecheckout # timeout=10
@@ -226,26 +224,26 @@ Injecting SonarQube environment variables using the configuration: SonarCloud
 
 12:30:52.994 INFO  Loaded core extensions: sca, architecture, a3s
 12:30:53.457 INFO  Process project properties
-12:30:53.488 INFO  Project key: ShanthakumarThanus_CrisisView-Pipeline
+12:30:53.488 INFO  Project key: [mon-nom-d-utilisateur]_CrisisView-Pipeline
 12:30:53.488 INFO  Base dir: /var/jenkins_home/workspace/CrisisView-Pipeline/frontend
 12:30:53.489 INFO  Working dir: /var/jenkins_home/workspace/CrisisView-Pipeline/frontend/.scannerwork
 12:30:53.510 INFO  Found an active CI vendor: 'Jenkins'
-12:30:53.636 INFO  Check ALM binding of project 'ShanthakumarThanus_CrisisView-Pipeline'
+12:30:53.636 INFO  Check ALM binding of project '[mon-nom-d-utilisateur]_CrisisView-Pipeline'
 
 12:30:53.797 INFO  Detected project binding: BOUND
-12:30:53.798 INFO  Check ALM binding of project 'ShanthakumarThanus_CrisisView-Pipeline' (done) | time=161ms
+12:30:53.798 INFO  Check ALM binding of project '[mon-nom-d-utilisateur]_CrisisView-Pipeline' (done) | time=161ms
 12:30:53.801 INFO  Load branch configuration
 12:30:53.804 INFO  Load branch configuration (done) | time=2ms
 12:30:53.809 INFO  Create analysis
 12:30:54.128 INFO  Create analysis (done) | time=318ms
-12:30:54.137 INFO  Load project settings for component key: 'ShanthakumarThanus_CrisisView-Pipeline'
-12:30:54.599 INFO  Load project settings for component key: 'ShanthakumarThanus_CrisisView-Pipeline' (done) | time=462ms
+12:30:54.137 INFO  Load project settings for component key: '[mon-nom-d-utilisateur]_CrisisView-Pipeline'
+12:30:54.599 INFO  Load project settings for component key: '[mon-nom-d-utilisateur]_CrisisView-Pipeline' (done) | time=462ms
 
 12:30:54.847 INFO  Load quality profiles
 12:30:55.083 INFO  Load quality profiles (done) | time=235ms
 12:30:55.118 INFO  Load active rules
 12:30:55.722 INFO  Load active rules (done) | time=604ms
-12:30:55.872 INFO  Organization key: shanthakumarthanus
+12:30:55.872 INFO  Organization key: [mon-nom-d-utilisateur]
 12:30:55.890 INFO  Preprocessing files...
 12:30:55.934 INFO  2 languages detected in 9 preprocessed files (done) | time=43ms
 12:30:55.935 INFO  0 files ignored because of inclusion/exclusion patterns
@@ -372,7 +370,7 @@ Injecting SonarQube environment variables using the configuration: SonarCloud
 12:31:13.675 INFO  Analysis report generated in 86ms, dir size=381 KB
 12:31:13.699 INFO  Analysis report compressed in 23ms, zip size=88 KB
 12:31:14.119 INFO  Analysis report uploaded in 419ms
-12:31:14.121 INFO  ANALYSIS SUCCESSFUL, you can find the results at: https://sonarcloud.io/dashboard?id=ShanthakumarThanus_CrisisView-Pipeline
+12:31:14.121 INFO  ANALYSIS SUCCESSFUL, you can find the results at: https://sonarcloud.io/dashboard?id=[mon-nom-d-utilisateur]_CrisisView-Pipeline
 12:31:14.122 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
 12:31:14.122 INFO  More about the report processing at https://sonarcloud.io/api/ce/task?id=AZ3ZONZOQ1UOG_pEo2Tq
 12:31:14.122 INFO  ------------- Upload SCA dependency files
@@ -462,7 +460,7 @@ Running in /var/jenkins_home/workspace/CrisisView-Pipeline/frontend
 [Pipeline] script
 [Pipeline] {
 [Pipeline] sh
-+ docker build -t shanthakumarthanus/crisisview-frontend:v1 .
++ docker build -t [mon-nom-d-utilisateur]/crisisview-frontend:v1 .
 
 #0 building with "default" instance using docker driver
 
@@ -568,15 +566,15 @@ Running in /var/jenkins_home/workspace/CrisisView-Pipeline/frontend
 #15 exporting config sha256:d63fd4f3aeb17e0f0f6036649574c47da1b54d7bd984bb91a6f7b9082582555c 0.0s done
 #15 exporting attestation manifest sha256:99d5c63cc3b39548348da9fb0306ce9dddae669b653a75c1b7f2d927a1e15e08 0.0s done
 #15 exporting manifest list sha256:88e2450147b54fcd54f47ebcf94dad64d24ba49b139b606eb5a6318c1b8da53f 0.0s done
-#15 naming to docker.io/shanthakumarthanus/crisisview-frontend:v1
-#15 naming to docker.io/shanthakumarthanus/crisisview-frontend:v1 done
-#15 unpacking to docker.io/shanthakumarthanus/crisisview-frontend:v1
+#15 naming to docker.io/[mon-nom-d-utilisateur]/crisisview-frontend:v1
+#15 naming to docker.io/[mon-nom-d-utilisateur]/crisisview-frontend:v1 done
+#15 unpacking to docker.io/[mon-nom-d-utilisateur]/crisisview-frontend:v1
 
-#15 unpacking to docker.io/shanthakumarthanus/crisisview-frontend:v1 8.7s done
+#15 unpacking to docker.io/[mon-nom-d-utilisateur]/crisisview-frontend:v1 8.7s done
 #15 DONE 23.5s
 [Pipeline] sh
 
-+ docker tag shanthakumarthanus/crisisview-frontend:v1 shanthakumarthanus/crisisview-frontend:latest
++ docker tag [mon-nom-d-utilisateur]/crisisview-frontend:v1 [mon-nom-d-utilisateur]/crisisview-frontend:latest
 [Pipeline] withCredentials
 Masking supported pattern matches of $DOCKER_PWD
 [Pipeline] {
@@ -584,7 +582,7 @@ Masking supported pattern matches of $DOCKER_PWD
 Warning: A secret was passed to "sh" using Groovy String interpolation, which is insecure.
 		 Affected argument(s) used the following variable(s): [DOCKER_PWD]
 		 See https://jenkins.io/redirect/groovy-string-interpolation for details.
-+ docker login -u shanthakumarthanus -p ****
++ docker login -u [mon-nom-d-utilisateur] -p ****
 WARNING! Using --password via the CLI is insecure. Use --password-stdin.
 
 WARNING! Your password will be stored unencrypted in /var/jenkins_home/.docker/config.json.
@@ -593,8 +591,8 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded
 [Pipeline] sh
-+ docker push shanthakumarthanus/crisisview-frontend:v1
-The push refers to repository [docker.io/shanthakumarthanus/crisisview-frontend]
++ docker push [mon-nom-d-utilisateur]/crisisview-frontend:v1
+The push refers to repository [docker.io/[mon-nom-d-utilisateur]/crisisview-frontend]
 1e5a4c89cee5: Waiting
 b0a1eaf66c69: Waiting
 f18232174bc9: Waiting
@@ -697,8 +695,8 @@ f766d56cdf02: Pushed
 
 v1: digest: sha256:88e2450147b54fcd54f47ebcf94dad64d24ba49b139b606eb5a6318c1b8da53f size: 856
 [Pipeline] sh
-+ docker push shanthakumarthanus/crisisview-frontend:latest
-The push refers to repository [docker.io/shanthakumarthanus/crisisview-frontend]
++ docker push [mon-nom-d-utilisateur]/crisisview-frontend:latest
+The push refers to repository [docker.io/[mon-nom-d-utilisateur]/crisisview-frontend]
 b0a1eaf66c69: Waiting
 40cbf73d4d89: Waiting
 f766d56cdf02: Waiting

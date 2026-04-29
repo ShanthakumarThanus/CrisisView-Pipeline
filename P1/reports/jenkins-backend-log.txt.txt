@@ -10,22 +10,19 @@ Running on Jenkins
 Selected Git installation does not exist. Using Default
 The recommended git tool is: NONE
 No credentials specified
-Cloning the remote Git repository
-Cloning repository https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline
- > git init /var/jenkins_home/workspace/CrisisView-Backend@2 # timeout=10
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/CrisisView-Backend@2/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline # timeout=10
 Fetching upstream changes from https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline
  > git --version # timeout=10
  > git --version # 'git version 2.47.3'
  > git fetch --tags --force --progress -- https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline +refs/heads/*:refs/remotes/origin/* # timeout=10
- > git config remote.origin.url https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline # timeout=10
- > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
-Avoid second fetch
  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
-Checking out Revision baf2d5060ddb3ac08b8718f33e824ca878b5854e (refs/remotes/origin/main)
+Checking out Revision fc98964d4d907725212021c1cecfbb20371def02 (refs/remotes/origin/main)
  > git config core.sparsecheckout # timeout=10
- > git checkout -f baf2d5060ddb3ac08b8718f33e824ca878b5854e # timeout=10
+ > git checkout -f fc98964d4d907725212021c1cecfbb20371def02 # timeout=10
 Commit message: "Update Jenkinsfile"
- > git rev-list --no-walk 5bbf290fb6f44880b4f354a8865caeb1d4235934 # timeout=10
+ > git rev-list --no-walk fa9e4f86b1fc8ee2b73639780ac5e7b5d3ff654b # timeout=10
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] withEnv
@@ -56,9 +53,9 @@ Fetching upstream changes from https://github.com/[mon-nom-d-utilisateur]/Crisis
  > git --version # 'git version 2.47.3'
  > git fetch --tags --force --progress -- https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline +refs/heads/*:refs/remotes/origin/* # timeout=10
  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
-Checking out Revision baf2d5060ddb3ac08b8718f33e824ca878b5854e (refs/remotes/origin/main)
+Checking out Revision fc98964d4d907725212021c1cecfbb20371def02 (refs/remotes/origin/main)
  > git config core.sparsecheckout # timeout=10
- > git checkout -f baf2d5060ddb3ac08b8718f33e824ca878b5854e # timeout=10
+ > git checkout -f fc98964d4d907725212021c1cecfbb20371def02 # timeout=10
 Commit message: "Update Jenkinsfile"
 [Pipeline] echo
 ✅ Code récupéré
@@ -77,12 +74,8 @@ Running in /var/jenkins_home/workspace/CrisisView-Backend@2/backend
 [Pipeline] {
 [Pipeline] sh
 + npm install --legacy-peer-deps
-npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
-npm warn deprecated dottie@2.0.7: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
-added 402 packages, and audited 403 packages in 4s
+up to date, audited 403 packages in 1s
 
 76 packages are looking for funding
   run `npm fund` for details
@@ -109,20 +102,22 @@ Run `npm audit` for details.
 Running in /var/jenkins_home/workspace/CrisisView-Backend@2/backend
 [Pipeline] {
 [Pipeline] sh
+
 + npx node --experimental-vm-modules node_modules/jest/bin/jest.js __tests__/incident.routes.test.js --coverage
+
   console.log
-    ◇ injected env (5) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+    ◇ injected env (5) from .env // tip: ⌘ suppress logs { quiet: true }
 
       at _log (node_modules/dotenv/lib/main.js:131:11)
 
-(node:404) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(node:1071) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
 PASS __tests__/incident.routes.test.js
   calculateDistance
     ✓ should calculate distance between two identical points as 0 (2 ms)
-    ✓ should calculate distance between Paris and London (1 ms)
-    ✓ should calculate distance between New York and Los Angeles
-    ✓ should handle negative coordinates
+    ✓ should calculate distance between Paris and London
+    ✓ should calculate distance between New York and Los Angeles (1 ms)
+    ✓ should handle negative coordinates (1 ms)
     ✓ should return correct data type (1 ms)
     ✓ should be symmetric
 
@@ -139,8 +134,219 @@ All files            |      50 |        0 |   11.11 |      50 |
 Test Suites: 1 passed, 1 total
 Tests:       6 passed, 6 total
 Snapshots:   0 total
-Time:        0.601 s
+Time:        0.785 s, estimated 1 s
 Ran all test suites matching __tests__/incident.routes.test.js.
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analysis)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/CrisisView-Backend@2/backend
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] tool
+Did you forget the `def` keyword? WorkflowScript seems to be setting a field named scannerHome (to a value of type String) which could lead to memory leaks or other issues.
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: SonarCloud
+[Pipeline] {
+[Pipeline] sh
+
++ /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQubeScanner/bin/sonar-scanner
+14:55:01.029 INFO  Scanner configuration file: /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQubeScanner/conf/sonar-scanner.properties
+14:55:01.032 INFO  Project root configuration file: /var/jenkins_home/workspace/CrisisView-Backend@2/backend/sonar-project.properties
+14:55:01.049 INFO  SonarScanner CLI 8.1.0.6389
+14:55:01.053 INFO  Linux 6.6.87.2-microsoft-standard-WSL2 amd64
+
+14:55:03.751 INFO  Communicating with SonarQube Cloud
+14:55:03.752 INFO  JRE provisioning: os[linux], arch[x86_64]
+
+14:55:05.199 INFO  Starting SonarScanner Engine...
+14:55:05.200 INFO  Java 21.0.9 Eclipse Adoptium (64-bit)
+
+14:55:08.482 INFO  Load global settings
+
+14:55:09.096 INFO  Load global settings (done) | time=611ms
+14:55:09.230 INFO  Server id: 1BD809FA-AWHW8ct9-T_TB3XqouNu
+14:55:09.428 INFO  Loading required plugins
+14:55:09.428 INFO  Load plugins index
+14:55:09.558 INFO  Load plugins index (done) | time=129ms
+14:55:09.559 INFO  Load/download plugins
+14:55:09.625 INFO  Load/download plugins (done) | time=66ms
+14:55:09.807 INFO  Loaded core extensions: sca, architecture, a3s
+
+14:55:10.180 INFO  Process project properties
+14:55:10.211 INFO  Project key: CrisisView-Backend
+14:55:10.212 INFO  Base dir: /var/jenkins_home/workspace/CrisisView-Backend@2/backend
+14:55:10.212 INFO  Working dir: /var/jenkins_home/workspace/CrisisView-Backend@2/backend/.scannerwork
+14:55:10.233 INFO  Found an active CI vendor: 'Jenkins'
+14:55:10.389 INFO  Check ALM binding of project 'CrisisView-Backend'
+14:55:10.612 INFO  Detected project binding: NOT_BOUND
+14:55:10.613 INFO  Check ALM binding of project 'CrisisView-Backend' (done) | time=223ms
+14:55:10.616 INFO  Load branch configuration
+14:55:10.617 INFO  Load branch configuration (done) | time=1ms
+14:55:10.620 INFO  Create analysis
+
+14:55:10.873 INFO  Create analysis (done) | time=252ms
+14:55:10.892 INFO  Load project settings for component key: 'CrisisView-Backend'
+14:55:11.385 INFO  Load project settings for component key: 'CrisisView-Backend' (done) | time=493ms
+
+14:55:11.764 INFO  Load quality profiles
+14:55:12.317 INFO  Load quality profiles (done) | time=553ms
+14:55:12.368 INFO  Load active rules
+
+14:55:12.935 INFO  Load active rules (done) | time=567ms
+14:55:13.238 INFO  Organization key: [mon-nom-d-utilisateur]
+14:55:13.278 INFO  Preprocessing files...
+14:55:13.341 INFO  1 language detected in 3 preprocessed files (done) | time=62ms
+14:55:13.341 INFO  0 files ignored because of inclusion/exclusion patterns
+14:55:13.341 INFO  0 files ignored because of scm ignore settings
+14:55:13.375 INFO  Loading plugins for detected languages
+14:55:13.375 INFO  Load/download plugins
+14:55:13.437 INFO  Load/download plugins (done) | time=61ms
+14:55:13.738 INFO  Load project repositories
+
+14:55:14.150 INFO  Load project repositories (done) | time=411ms
+14:55:14.194 INFO  Indexing files...
+14:55:14.195 INFO  Project configuration:
+14:55:14.195 INFO    Excluded sources: **/node_modules/**, **/__tests__/**, **/coverage/**, **/build-wrapper-dump.json
+14:55:14.199 INFO  3 files indexed (done) | time=4ms
+14:55:14.200 INFO  Quality profile for js: Sonar way
+14:55:14.200 INFO  ------------- Run sensors on module CrisisView Backend
+14:55:14.275 INFO  Load metrics repository
+14:55:14.342 INFO  Load metrics repository (done) | time=66ms
+14:55:14.354 INFO  Sensor cache enabled
+14:55:14.359 INFO  Load sensor cache
+14:55:14.713 INFO  Load sensor cache (12 KB) | time=353ms
+
+14:55:15.073 INFO  Reflections took 80 ms to scan 1 urls, producing 26 keys and 266 values
+
+14:55:15.839 INFO  Sensor HTML [web]
+14:55:15.840 INFO  Sensor HTML [web] (done) | time=1ms
+14:55:15.841 INFO  Sensor JasminFileCollectorSensor [jasmin]
+14:55:15.841 INFO  Sensor JasminFileCollectorSensor [jasmin] (done) | time=0ms
+14:55:15.841 INFO  Sensor IaC hadolint report Sensor [iac]
+14:55:15.842 INFO  Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
+14:55:15.842 INFO  Sensor Java Config Sensor [iac]
+14:55:15.848 INFO  There are no files to be analyzed for the Java language
+14:55:15.849 INFO  Sensor Java Config Sensor [iac] (done) | time=5ms
+14:55:15.849 INFO  Sensor IaC Docker Sensor [iac]
+14:55:15.850 INFO  There are no files to be analyzed for the Docker language
+14:55:15.850 INFO  Sensor IaC Docker Sensor [iac] (done) | time=1ms
+14:55:15.850 INFO  Sensor IaC GitHub Actions Sensor [iac]
+14:55:15.851 INFO  There are no files to be analyzed for the GitHub Actions language
+14:55:15.851 INFO  Sensor IaC GitHub Actions Sensor [iac] (done) | time=0ms
+14:55:15.851 INFO  Sensor IaC actionlint report Sensor [iac]
+14:55:15.851 INFO  Sensor IaC actionlint report Sensor [iac] (done) | time=0ms
+14:55:15.851 INFO  Sensor IaC Shell Sensor [iac]
+14:55:15.852 INFO  There are no files to be analyzed for the Shell language
+14:55:15.852 INFO  Sensor IaC Shell Sensor [iac] (done) | time=0ms
+14:55:15.852 INFO  Sensor JavaScript/TypeScript/CSS analysis [javascript]
+14:55:16.236 INFO  Detected os: Linux arch: amd64 alpine: false. Platform: LINUX_X64
+14:55:16.237 INFO  Deploy location /var/jenkins_home/.sonar/js/node-runtime, tagetRuntime: /var/jenkins_home/.sonar/js/node-runtime/node,  version: /var/jenkins_home/.sonar/js/node-runtime/version.txt
+14:55:16.380 INFO  Using embedded Node.js runtime.
+14:55:16.380 INFO  Using Node.js executable: '/var/jenkins_home/.sonar/js/node-runtime/node'.
+
+14:55:18.758 INFO  Memory configuration: OS (7589 MB), Node.js (2240 MB).
+14:55:18.845 INFO  WebSocket client connected on /ws
+14:55:18.848 INFO  Plugin version: [12.3.0.39932]
+
+14:55:20.892 INFO  Found 0 tsconfig.json file(s): []
+
+14:55:23.030 INFO  3 source files to be analyzed
+14:55:23.031 INFO  Analyzing 3 file(s) using default options [lib: lib.esnext.d.ts, lib.dom.d.ts]
+14:55:23.031 INFO  3/3 source files have been analyzed
+14:55:23.078 INFO  JasminAstConsumer done
+14:55:23.078 INFO  Hit the cache for 0 out of 3
+14:55:23.078 INFO  Miss the cache for 3 out of 3: ANALYSIS_MODE_INELIGIBLE [3/3]
+14:55:23.079 INFO  Sensor JavaScript/TypeScript/CSS analysis [javascript] (done) | time=7227ms
+14:55:23.079 INFO  Sensor JavaScript/TypeScript Coverage [javascript]
+14:55:23.079 INFO  Analysing [/var/jenkins_home/workspace/CrisisView-Backend@2/backend/coverage/lcov.info]
+14:55:23.090 WARN  Could not resolve 2 file paths in [/var/jenkins_home/workspace/CrisisView-Backend@2/backend/coverage/lcov.info]
+14:55:23.090 WARN  First unresolved path: db.js (Run in DEBUG mode to get full list of unresolved paths)
+14:55:23.091 INFO  Sensor JavaScript/TypeScript Coverage [javascript] (done) | time=11ms
+14:55:23.091 INFO  Sensor EnterpriseTextAndSecretsSensor [textenterprise]
+14:55:23.112 INFO  Available processors: 12
+14:55:23.112 INFO  Using 12 threads for analysis.
+14:55:23.518 INFO  The property "sonar.tests" is not set. To improve the analysis accuracy, we categorize a file as a test file if any of the following is true:
+  * The filename starts with "test"
+  * The filename contains "test." or "tests."
+  * Any directory in the file path is named: "doc", "docs", "test", "tests", "mock" or "mocks"
+  * Any directory in the file path has a name ending in "test" or "tests"
+
+14:55:23.585 INFO  Start fetching files for the text and secrets analysis
+14:55:23.596 INFO  Using Git CLI to retrieve dirty files
+14:55:23.622 INFO  Retrieving language associated files and files included via "sonar.text.inclusions" that are tracked by git
+14:55:23.623 INFO  Starting the text and secrets analysis
+14:55:23.625 INFO  3 source files to be analyzed for the text and secrets analysis
+14:55:23.647 INFO  3/3 source files have been analyzed for the text and secrets analysis
+14:55:23.651 INFO  Start fetching files for the binary file analysis
+14:55:23.651 INFO  There are no files to be analyzed for the binary file analysis
+14:55:23.653 INFO  Sensor EnterpriseTextAndSecretsSensor [textenterprise] (done) | time=562ms
+14:55:23.659 INFO  ------------- Run sensors on project
+14:55:23.826 INFO  Sensor JsSecuritySensorV2 [jasmin]
+14:55:23.910 INFO  3 file(s) will be analysed by SonarJasmin.
+
+14:55:26.862 INFO  Analysis progress:  33% (1/3 files)
+14:55:27.059 INFO  Analysis progress:  66% (2/3 files)
+14:55:27.221 INFO  Sensor JsSecuritySensorV2 [jasmin] (done) | time=3394ms
+14:55:27.221 INFO  Sensor JsArchitectureSensor [architecture]
+
+14:55:27.263 INFO  Found 1 potential Udg file location(s) for "js" in "/var/jenkins_home/workspace/CrisisView-Backend@2/backend/.scannerwork"
+14:55:27.264 INFO  - /var/jenkins_home/workspace/CrisisView-Backend@2/backend/.scannerwork/architecture/js
+14:55:27.282 INFO  Architecture analysis is enabled with the following features: legacy, discovery, flaws, smells, deviations, directives
+14:55:27.288 INFO  * Protobuf reading starting | memory total=183 | free=46 | used=136 (MB)
+14:55:27.288 INFO  * Reading SonarArchitecture UDG data from directory "/var/jenkins_home/workspace/CrisisView-Backend@2/backend/.scannerwork/architecture/js"
+14:55:27.447 INFO  * Files successfully loaded: "3" out of "3"
+14:55:27.447 INFO  * Purging externals (components not scanned) from graphs
+14:55:27.448 INFO  * Purging excluded nodes from graphs
+14:55:27.449 INFO  * Protobuf reading complete | memory total=183 | free=34 | used=148 (MB)
+14:55:27.476 INFO  * Build architecture.graph.js.file_graph.default_perspective hierarchy graph complete (filtered=false) | memory total=183 | free=32 | used=150 (MB)
+14:55:27.490 INFO  No directives configured
+14:55:27.492 INFO  * No intended architecture defined or detected, using an empty model
+14:55:27.608 INFO  Sensor JsArchitectureSensor [architecture] (done) | time=386ms
+14:55:27.609 INFO  Sensor Zero Coverage Sensor
+14:55:27.611 INFO  Sensor Zero Coverage Sensor (done) | time=3ms
+14:55:27.612 INFO  Sensor Architecture Telemetry [architecture]
+14:55:27.612 INFO  Sensor Architecture Telemetry [architecture] (done) | time=0ms
+14:55:27.742 INFO  ------------- Gather SCA dependencies on project
+14:55:28.083 INFO  Dependency analysis skipped
+14:55:28.085 INFO  CPD Executor Calculating CPD for 3 files
+14:55:28.094 INFO  CPD Executor CPD calculation finished (done) | time=9ms
+14:55:28.096 INFO  SCM Publisher SCM provider for this project is: git
+14:55:28.096 INFO  SCM Publisher 3 source files to be analyzed
+
+14:55:28.251 INFO  SCM Publisher 3/3 source files have been analyzed (done) | time=153ms
+14:55:28.257 INFO  SCM revision ID 'fc98964d4d907725212021c1cecfbb20371def02'
+14:55:28.348 INFO  Analysis report generated in 93ms, dir size=353 KB
+14:55:28.363 INFO  Analysis report compressed in 14ms, zip size=72 KB
+14:55:28.597 INFO  Analysis report uploaded in 234ms
+14:55:28.598 INFO  ANALYSIS SUCCESSFUL, you can find the results at: https://sonarcloud.io/dashboard?id=CrisisView-Backend
+14:55:28.598 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+14:55:28.598 INFO  More about the report processing at https://sonarcloud.io/api/ce/task?id=AZ3ZvOVxynL4NDD1xgVW
+14:55:28.598 INFO  ------------- Upload SCA dependency files
+
+14:55:29.726 INFO  Successfully sent architecture data
+14:55:30.039 INFO  Sensor cache published successfully
+
+14:55:30.373 INFO  Analysis total time: 20.565 s
+14:55:30.376 INFO  SonarScanner Engine completed successfully
+14:55:30.771 INFO  EXECUTION SUCCESS
+14:55:30.772 INFO  Total time: 29.786s
+[Pipeline] }
+
+[Pipeline] // withSonarQubeEnv
 [Pipeline] }
 [Pipeline] // dir
 [Pipeline] }
@@ -160,10 +366,14 @@ Running in /var/jenkins_home/workspace/CrisisView-Backend@2/backend
 Masking supported pattern matches of $VM_IP or $VM_USER or $SSH_KEY
 [Pipeline] {
 [Pipeline] sh
+
 + mkdir -p /var/jenkins_home/.ssh
 + ssh-keyscan -H ****
+
 + ssh -i **** ****@**** sudo mkdir -p /var/www/backend && sudo chown -R ****:**** /var/www/backend
+
 + scp -i **** -r ./package.json ./server.js ./routes ./models.js ./db.js ./migration.js ./seed.js ./Dockerfile ./Jenkinsfile ./sonar-project.properties ****@****:/var/www/backend/
+
 [Pipeline] }
 [Pipeline] // withCredentials
 [Pipeline] }
@@ -181,6 +391,7 @@ Masking supported pattern matches of $VM_IP or $VM_USER or $SSH_KEY
 [Pipeline] }
 [Pipeline] // withEnv
 [Pipeline] }
+
 [Pipeline] // withEnv
 [Pipeline] }
 [Pipeline] // node
