@@ -1,13 +1,15 @@
-module.exports = {
+const nextJest = require('next/jest');
+
+const createJestConfig = nextJest({
+  dir: './',
+});
+
+const config = {
   testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
-    '\\.(css|less|scss)$': 'identity-obj-proxy',
+    '^@/(.*)$': '<rootDir>/$1',
   },
-  transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest',
-  },
-  transformIgnorePatterns: [
-    'node_modules/(?!(react-leaflet|leaflet|@react-leaflet)/)',
-  ],
-  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
 };
+
+module.exports = createJestConfig(config);
