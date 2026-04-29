@@ -1,0 +1,188 @@
+Obtained backend/Jenkinsfile from git https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in /var/jenkins_home/workspace/CrisisView-Backend@2
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline
+ > git init /var/jenkins_home/workspace/CrisisView-Backend@2 # timeout=10
+Fetching upstream changes from https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision baf2d5060ddb3ac08b8718f33e824ca878b5854e (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f baf2d5060ddb3ac08b8718f33e824ca878b5854e # timeout=10
+Commit message: "Update Jenkinsfile"
+ > git rev-list --no-walk 5bbf290fb6f44880b4f354a8865caeb1d4235934 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/CrisisView-Backend@2/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline # timeout=10
+Fetching upstream changes from https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/[mon-nom-d-utilisateur]/CrisisView-Pipeline +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision baf2d5060ddb3ac08b8718f33e824ca878b5854e (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f baf2d5060ddb3ac08b8718f33e824ca878b5854e # timeout=10
+Commit message: "Update Jenkinsfile"
+[Pipeline] echo
+✅ Code récupéré
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Install Dependencies)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/CrisisView-Backend@2/backend
+[Pipeline] {
+[Pipeline] sh
++ npm install --legacy-peer-deps
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated dottie@2.0.7: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+
+added 402 packages, and audited 403 packages in 4s
+
+76 packages are looking for funding
+  run `npm fund` for details
+
+2 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/CrisisView-Backend@2/backend
+[Pipeline] {
+[Pipeline] sh
++ npx node --experimental-vm-modules node_modules/jest/bin/jest.js __tests__/incident.routes.test.js --coverage
+  console.log
+    ◇ injected env (5) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+
+      at _log (node_modules/dotenv/lib/main.js:131:11)
+
+(node:404) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS __tests__/incident.routes.test.js
+  calculateDistance
+    ✓ should calculate distance between two identical points as 0 (2 ms)
+    ✓ should calculate distance between Paris and London (1 ms)
+    ✓ should calculate distance between New York and Los Angeles
+    ✓ should handle negative coordinates
+    ✓ should return correct data type (1 ms)
+    ✓ should be symmetric
+
+---------------------|---------|----------|---------|---------|----------------------------
+File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s          
+---------------------|---------|----------|---------|---------|----------------------------
+All files            |      50 |        0 |   11.11 |      50 |                            
+ backend             |     100 |      100 |     100 |     100 |                            
+  db.js              |     100 |      100 |     100 |     100 |                            
+  models.js          |     100 |      100 |     100 |     100 |                            
+ backend/routes      |      40 |        0 |   11.11 |      40 |                            
+  incident.routes.js |      40 |        0 |   11.11 |      40 | 21,25,29,33-34,38-39,44-80 
+---------------------|---------|----------|---------|---------|----------------------------
+Test Suites: 1 passed, 1 total
+Tests:       6 passed, 6 total
+Snapshots:   0 total
+Time:        0.601 s
+Ran all test suites matching __tests__/incident.routes.test.js.
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/CrisisView-Backend@2/backend
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $VM_IP or $VM_USER or $SSH_KEY
+[Pipeline] {
+[Pipeline] sh
++ mkdir -p /var/jenkins_home/.ssh
++ ssh-keyscan -H ****
++ ssh -i **** ****@**** sudo mkdir -p /var/www/backend && sudo chown -R ****:**** /var/www/backend
++ scp -i **** -r ./package.json ./server.js ./routes ./models.js ./db.js ./migration.js ./seed.js ./Dockerfile ./Jenkinsfile ./sonar-project.properties ****@****:/var/www/backend/
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+🎉 Pipeline backend terminé !
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
