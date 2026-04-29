@@ -13,12 +13,6 @@ pipeline {
     
     stages {
 
-        stage('Init') {
-            steps {
-                sh 'chmod 666 /var/run/docker.sock'
-            }
-        }
-
         stage('Checkout') {
             steps {
                 checkout scm
