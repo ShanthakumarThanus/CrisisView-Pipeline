@@ -88,7 +88,7 @@ pipeline {
                         sh '''
                             mkdir -p ~/.ssh
                             ssh-keyscan -H ${VM_IP} >> ~/.ssh/known_hosts
-                            ssh -i ${SSH_KEY} ${VM_USER}@${VM_IP} "sudo mkdir -p /var/www/crisisview"
+                            ssh -i ${SSH_KEY} ${VM_USER}@${VM_IP} "sudo mkdir -p /var/www/crisisview && sudo chown -R ${VM_USER}:${VM_USER} /var/www/crisisview"
                             scp -i ${SSH_KEY} -r .next/* ${VM_USER}@${VM_IP}:/var/www/crisisview/
                         '''
                     }
