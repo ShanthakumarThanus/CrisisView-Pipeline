@@ -1,0 +1,73 @@
+pipeline {
+    agent any
+    
+    tools {
+        nodejs 'NodeJS'
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+                echo '✅ Code récupéré'
+            }
+        }
+        
+        stage('Install Dependencies') {
+            steps {
+                dir('backend') {
+                    sh 'npm install --legacy-peer-deps'
+                }
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                dir('backend') {
+                    sh 'npm test -- --coverage'
+                }
+            }
+        }
+        
+        stage('SonarQube Analysis') {
+            steps {
+                dir('backend') {
+                    script {
+                        scannerHome = tool 'SonarQubeScanner'
+                    }
+                    withSonarQubeEnv('SonarCloud') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
+                }
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                dir('backend') {
+                    withCredentials([
+                        string(credentialsId: 'azure-vm-ip', variable: 'VM_IP'),
+                        string(credentialsId: 'azure-vm-user', variable: 'VM_USER'),
+                        sshUserPrivateKey(credentialsId: 'azure-ssh-key', keyFileVariable: 'SSH_KEY')
+                    ]) {
+                        sh '''
+                            mkdir -p ~/.ssh
+                            ssh-keyscan -H ${VM_IP} >> ~/.ssh/known_hosts
+                            ssh -i ${SSH_KEY} ${VM_USER}@${VM_IP} "sudo mkdir -p /var/www/backend && sudo chown -R ${VM_USER}:${VM_USER} /var/www/backend"
+                            scp -i ${SSH_KEY} -r ./* ${VM_USER}@${VM_IP}:/var/www/backend/
+                        '''
+                    }
+                }
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo '🎉 Pipeline backend terminé !'
+        }
+        failure {
+            echo '❌ Pipeline échoué'
+        }
+    }
+}
