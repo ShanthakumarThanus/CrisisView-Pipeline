@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: shanthakumarthanus/crisisview-frontend:v1
+    container_name: crisisview-frontend
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  backend:
+    image: shanthakumarthanus/crisisview-backend:v1
+    container_name: crisisview-backend
+    ports:
+      - "3001:3001"
+    restart: unless-stopped
